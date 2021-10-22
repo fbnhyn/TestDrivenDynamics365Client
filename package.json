@@ -1,0 +1,15 @@
+{
+  "name": "testdrivendynamics365client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sum.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.2.5",
+    "xrm-mock": "^3.5.4"
+  }
+}
