@@ -1,28 +1,32 @@
-if (typeof Crm == "undefined") Crm = {_namespace: true};
-if (typeof Crm.Contact == "undefined") Crm.Contact = {_namespace: true};
+if (typeof Crm == "undefined") Crm = { _namespace: true };
+if (typeof Crm.Contact == "undefined") Crm.Contact = { _namespace: true };
 
 Crm.Contact.Entity = {
   fields: {
-    name: 'name',
-    phone: 'phone',
-    account: 'account',
-    gender: 'gender',
-    language: 'language',
-    salutation: 'salutaion'
+    name: "name",
+    phone: "phone",
+    account: "account",
+    gender: "gender",
+    language: "language",
+    salutation: "salutaion",
+    street: "street",
+    house: "house",
+    city: "city",
+    country: "country",
   },
   options: {
     gender: {
       m: 1,
       f: 2,
-      d: 0
+      d: 0,
     },
     language: {
       de: 0,
       en: 1,
       fr: 2,
-      es: 3
-    }
-  }
-}
+      es: 3,
+    },
+  },
+};
 
 module.exports = Crm.Contact.Entity;
