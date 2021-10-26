@@ -1,6 +1,7 @@
 const contactModel = require("../entity");
 const businessrules = require("../businesrules");
 const { XrmMockGenerator } = require("xrm-mock");
+const { } = require()
 
 describe("Test salutation of contact", () => {
   beforeEach(() => {
@@ -44,5 +45,30 @@ describe("Test salutation of contact", () => {
     businessrules._handleSalutation();
     const actual = _fc.getAttribute(contactModel.fields.salutation).getValue();
     expect(actual).toBe("Misses");
+  });
+});
+
+describe("Test fetching adress from parentcustomerid", () => {
+  beforeEach(() => {
+    XrmMockGenerator.initialise();
+    XrmMockGenerator.Attribute.createLookup(contactModel.fields.parentcustomerid, {
+      entityType: "account",
+      id: "{3560e694-3693-11ec-8d3d-0242ac130003}",
+      name: "acme Studios",
+      adress: "Best Place Ever"
+    });
+  });
+  it("Should have the best adress", async () => {
+    const mock = jest.spyOn(Xrm.WebApi, 'retrieveRecord');
+    mock.mockImplementation(() => {
+      const result = {
+        adress: "Best Place Ever"
+      }
+      return result;
+    });
+    const _fc = XrmMockGenerator.getFormContext();
+    businessrules.formContext = _fc;
+    const r = await businessrules._handleAdressUpdate();
+    expect(r.adress).toBe("Best Place Ever");
   });
 });

@@ -9,10 +9,8 @@ Crm.Contact.Entity = {
     gender: "gender",
     language: "language",
     salutation: "salutaion",
-    street: "street",
-    house: "house",
-    city: "city",
-    country: "country",
+    adress: "adress",
+    parentcustomerid: "parentcustomerid"
   },
   options: {
     gender: {

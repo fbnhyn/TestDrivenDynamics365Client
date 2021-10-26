@@ -1,3 +1,4 @@
+const { XrmMockGenerator } = require("xrm-mock");
 const contactModel = require("./entity");
 
 if (typeof Crm == "undefined") Crm = { _namespace: true };
@@ -75,6 +76,14 @@ Crm.Contact.Businessrules = {
         salutationAttribute.setValue(null);
         break;
     }
+  },
+  async _handleAdressUpdate() {
+    const [entityType, id] = this.formContext.getAttribute(contactModel.fields.parentcustomerid).getValue();
+    return await Xrm.WebApi.retrieveRecord(
+      entityType,
+      id,
+      '$select=adress'
+    );
   }
 };
 
