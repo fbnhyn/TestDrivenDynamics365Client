@@ -26,5 +26,3 @@ Crm.Contact.Entity = {
     },
   },
 };
-
-module.exports = Crm.Contact.Entity;
